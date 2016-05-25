@@ -1,4 +1,6 @@
-import pygtk, gtk, sqlalchemy
+import pygtk
+import gtk
+import sqlalchemy
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -7,8 +9,9 @@ Base = declarative_base()
 engine = create_engine('sqlite:///database.sqlite', echo=True)
 Session = sessionmaker(bind=engine)
 
+
 class Anime(Base):
-    __tablename__= 'Anime'
+    __tablename__ = 'Anime'
     id = Column(Integer, primary_key=True)
     name = Column(String)
     tags = Column(String)
@@ -18,17 +21,18 @@ class Anime(Base):
     def __repr__(self):
         return self.name
 
+
 class Window1:
     """ This is just a test function """
+
     def __init__(self):
         self.session = Session()
         self.gladefile = "myultimate.glade"
         self.builder = gtk.Builder()
         self.builder.add_from_file(self.gladefile)
-        
-        dic = { "on_btnQuit_clicked": self.btnQuit_clicked,
-                "on_btnSave_clicked": self.btnSave_clicked
-             }
+
+        dic = {"on_btnQuit_clicked": self.btnQuit_clicked,
+               "on_btnSave_clicked": self.btnSave_clicked}
 
         self.gtkName = self.builder.get_object('txtboxName')
         self.gtkTags = self.builder.get_object('txtboxTags')
@@ -43,7 +47,7 @@ class Window1:
 
     def btnSave_clicked(self, widget):
         self.anime_on_session = Anime(
-             name=self.gtkName.get_text(), 
+             name=self.gtkName.get_text(),
              tags=self.gtkTags.get_text(),
              plot=self.gtkPlot.get_text(),
              star=self.gtkStar.get_text()
