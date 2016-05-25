@@ -1,4 +1,22 @@
-import pygtk, gtk
+import pygtk, gtk, sqlalchemy
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+Base = declarative_base()
+engine = create_engine('sqlite:///database.sqlite', echo=True)
+Session = sessionmaker(bind=engine)
+
+class Anime(Base):
+    __tablename__= 'Anime'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    tags = Column(String)
+    plot = Column(String)
+    star = Column(Integer)
+
+    def __repr__(self):
+        return self.name
 
 class Window1:
     """ This is just a test function """
