@@ -46,7 +46,10 @@ class Window1:
             self.window.connect("destroy", gtk.main_quit)
 
     def get_plot(self):
-        self.plot = "tae"
+        self.start = self.gtkPlot.get_buffer().get_start_iter()
+        self.end = self.gtkPlot.get_buffer().get_end_iter()
+        self.textbuffer = self.gtkPlot.get_buffer().get_text(self.start, self.end)
+        self.plot = unicode(self.textbuffer)
         return self.plot
 
     def btnSave_clicked(self, widget):
@@ -57,6 +60,7 @@ class Window1:
              star=self.gtkStar.get_text()
         )
         self.session.add(self.anime_on_session)
+        print "Saving to database..."
         self.session.commit()
 
     def btnQuit_clicked(self, widget):
