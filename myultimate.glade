@@ -117,9 +117,9 @@
                   <object class="GtkTextView" id="txtboxPlot">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="tooltip_text" translatable="yes">Write the Plot here.</property>
                     <property name="border_width">10</property>
                     <property name="wrap_mode">word</property>
-                    <property name="indent">8</property>
                   </object>
                 </child>
               </object>
