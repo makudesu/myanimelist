@@ -48,7 +48,9 @@ class Window1:
     def get_plot(self):
         self.start = self.gtkPlot.get_buffer().get_start_iter()
         self.end = self.gtkPlot.get_buffer().get_end_iter()
-        self.textbuffer = self.gtkPlot.get_buffer().get_text(self.start, self.end)
+        self.textbuffer = self.gtkPlot.get_buffer().get_text(
+            self.start,
+            self.end)
         self.plot = unicode(self.textbuffer)
         return self.plot
 
