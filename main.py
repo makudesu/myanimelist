@@ -51,7 +51,8 @@ class Window1:
         self.textbuffer = self.gtkPlot.get_buffer().get_text(
             self.start,
             self.end)
-        self.plot = unicode(self.textbuffer)
+        self.plot = unicode(self.textbuffer, "utf-8")
+# putting it back self.backTobytes = u.encode(self.textbuffer, "utf-8")
         return self.plot
 
     def btnSave_clicked(self, widget):
