@@ -45,11 +45,15 @@ class Window1:
         if (self.window):
             self.window.connect("destroy", gtk.main_quit)
 
+    def get_plot(self):
+        self.plot = "tae"
+        return self.plot
+
     def btnSave_clicked(self, widget):
         self.anime_on_session = Anime(
              name=self.gtkName.get_text(),
              tags=self.gtkTags.get_text(),
-             plot=self.gtkPlot.get_text(),
+             plot=self.get_plot(),
              star=self.gtkStar.get_text()
         )
         self.session.add(self.anime_on_session)

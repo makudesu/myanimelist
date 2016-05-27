@@ -108,14 +108,20 @@
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="txtboxPlot">
+              <object class="GtkScrolledWindow" id="scrolledwindow1">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
-                <property name="invisible_char">●</property>
-                <property name="primary_icon_activatable">False</property>
-                <property name="secondary_icon_activatable">False</property>
-                <property name="primary_icon_sensitive">True</property>
-                <property name="secondary_icon_sensitive">True</property>
+                <property name="hscrollbar_policy">automatic</property>
+                <property name="vscrollbar_policy">automatic</property>
+                <child>
+                  <object class="GtkTextView" id="txtboxPlot">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="border_width">10</property>
+                    <property name="wrap_mode">word</property>
+                    <property name="indent">8</property>
+                  </object>
+                </child>
               </object>
               <packing>
                 <property name="expand">True</property>
