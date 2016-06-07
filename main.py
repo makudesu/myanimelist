@@ -67,9 +67,14 @@ class Window1:
         self.session.commit()
 
     def btnQuit_clicked(self, widget):
-        gtk.main_quit()
+        self.anime_on_db = self.session
+        for name, plot in self.anime_on_db.query(Anime.name, Anime.plot):
+            print "anime name: %s" % name
+            print "anime plot: %s" % plot
+#        gtk.main_quit()
 
 
 if __name__ == "__main__":
     app = Window1()
+    #Base.metadata.create_all(engine)
     gtk.main()
